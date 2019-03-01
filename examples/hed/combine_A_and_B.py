@@ -1,3 +1,5 @@
+# Adapted from https://github.com/phillipi/pix2pix/blob/master/scripts/combine_A_and_B.py
+
 from pdb import set_trace as st
 import os
 import numpy as np

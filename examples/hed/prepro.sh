@@ -1,4 +1,4 @@
-PREFIX='data/jellyfish'
+PREFIX=$1
 
 RESIZE_DIR=$PREFIX'256'
 MAT_DIR=$PREFIX'mat'
