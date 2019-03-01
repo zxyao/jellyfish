@@ -97,7 +97,6 @@ MANIFEST-*
 *.png
 *.mat
 
-datasets/*
 checkpoints/*
 results/*
 __pycache__
