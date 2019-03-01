@@ -5,13 +5,12 @@ import scipy.io
 
 parser = argparse.ArgumentParser("mat2jpg")
 
-parser.add_argument('--folder-prefix', type=str, required=True)
-parser.add_argument('--input-dir', type=str, default='mat')
-parser.add_argument('--output-dir', type=str, default='edge')
+parser.add_argument('--input-dir', type=str, default='jellyfishmat')
+parser.add_argument('--output-dir', type=str, default='jellyfishedge')
 args = parser.parse_args()
 
-MAT_PATH = args.folder_prefix + args.input_dir
-OUTPUT_PATH = args.folder_prefix + args.output_dir
+MAT_PATH = args.input_dir
+OUTPUT_PATH = args.output_dir
 
 def mat2jpg(fname):
     mat = scipy.io.loadmat(os.path.join(MAT_PATH, fname))['predict']

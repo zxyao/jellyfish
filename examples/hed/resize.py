@@ -4,14 +4,13 @@ import argparse
 
 parser = argparse.ArgumentParser("resize images")
 
-parser.add_argument('--folder-prefix', type=str, required=True)
-parser.add_argument('--input-dir', type=str, default="")
-parser.add_argument('--output-dir', type=str, default="256")
+parser.add_argument('--input-dir', type=str, default="jellyfish")
+parser.add_argument('--output-dir', type=str, default="jellyfish256")
 parser.add_argument('--size', type=int, default=256)
 args = parser.parse_args()
 
-IMAGE_PATH = args.folder_prefix + args.input_dir
-OUTPUT_PATH = args.folder_prefix + args.output_dir
+IMAGE_PATH = args.input_dir
+OUTPUT_PATH = args.output_dir
 size = args.size
 
 def resize(fname):
