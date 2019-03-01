@@ -50,7 +50,7 @@ gen_iter = 0
 
 test_batch = minibatch(testAB, 6, load_size, image_size, direction)
 
-for i in range(3):
+for i in range(len(testAB) // 6):
     _, testA, testB = next(test_batch)
     fakeB = netG_gen(testA)
     save_fig(np.concatenate([testA, testB, fakeB], axis=0), image_size, gen_iter, 'test')
