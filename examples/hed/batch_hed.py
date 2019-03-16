@@ -53,7 +53,8 @@ caffe.set_device(args.gpu_id)
 # load net
 net = caffe.Net(args.prototxt, args.caffemodel, caffe.TEST)
 # pad border
-border = args.border    
+border = args.border
+offset = 32
 
 for i in range(nImgs):
     if i % 20 == 0:
@@ -61,7 +62,7 @@ for i in range(nImgs):
     im = Image.open(os.path.join(args.images_dir, imgList[i]))
 
     in_ = np.array(im, dtype=np.float32)
-    in_ = np.pad(in_,((border, border),(border,border),(0,0)),'reflect')
+    in_ = np.pad(in_,((border, border),(border,border),(0,0)),'constant')
 
     in_ = in_[:,:,0:3]
     in_ = in_[:,:,::-1]
@@ -76,7 +77,7 @@ for i in range(nImgs):
     net.forward()
     fuse = net.blobs['sigmoid-fuse'].data[0][0, :, :]
     # get rid of the border
-    fuse = fuse[border:-border, border:-border]
+    fuse = fuse[border+offset:-border+offset, border+offset:-border+offset]
     # save hed file to the disk
     name, ext = os.path.splitext(imgList[i])
     sio.savemat(os.path.join(args.hed_mat_dir, name + '.mat'), {'predict':fuse})

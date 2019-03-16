@@ -22,7 +22,7 @@ def resize(fname):
         im = rgbim
     im.save(os.path.join(OUTPUT_PATH, fname[:-4]+'.jpg'))
 
-images = filter(lambda f: not f.startswith('.'), os.listdir(IMAGE_PATH))
+images = list(filter(lambda f: not f.startswith('.'), os.listdir(IMAGE_PATH)))
 if not os.path.exists(OUTPUT_PATH):
     print('Created output directory {}'.format(OUTPUT_PATH))
     os.makedirs(OUTPUT_PATH)
